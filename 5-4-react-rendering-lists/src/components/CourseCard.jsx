@@ -68,16 +68,20 @@ export default function CourseCard({ course, index, onMutateCourse }) {
       </form>
 
         <ul className="tasks">
-            {/* TODO: course.tasks.map(task => <TaskItem key={task.id} task={task} onToggle={toggleTask} onDelete={deleteTask} />) */}
-            {course.tasks.map(task =>
-                <TaskItem
-                    key={task.id}
-                    task={task}
-                    onToggle={toggleTask}
-                    onDelete={deleteTask}
-                />
+            {course.tasks.length === 0 ? (
+                <p className="empty">No tasks yet. Add your first one below</p>
+            ) : (
+                course.tasks.map((task) => (
+                    <TaskItem
+                        key={task.id}
+                        task={task}
+                        onToggle={toggleTask}
+                        onDelete={deleteTask}
+                    />
+                ))
             )}
         </ul>
+
 
     </article>
   );
