@@ -32,6 +32,10 @@ export default function CourseCard({ course, index, onMutateCourse }) {
       <header className="cardHeader">
         <h2>{course.title}</h2>
         {/* 🟩 PART A (Anchor): Show "All caught up" badge when ALL tasks are done (logical &&) */}
+          {course.tasks.length > 0 && course.tasks.every(t => t.isDone) && (
+              <span className="badge success">All caught up </span>
+          )}
+
       </header>
 
 
@@ -39,9 +43,7 @@ export default function CourseCard({ course, index, onMutateCourse }) {
       <section className="tasksSection">
         {/* 📘 TASK 2 — Render Tasks for Each Course */}
         {/* 🔎 Anchor: You’ll write your code right inside this list. */}
-        <ul className="tasks">
-          {/* TODO: course.tasks.map(task => <TaskItem key={task.id} task={task} onToggle={toggleTask} onDelete={deleteTask} />) */}
-        </ul>
+
       </section>
 
 
@@ -64,6 +66,19 @@ export default function CourseCard({ course, index, onMutateCourse }) {
           <button type="submit" className="primary">Add</button>
         </div>
       </form>
+
+        <ul className="tasks">
+            {/* TODO: course.tasks.map(task => <TaskItem key={task.id} task={task} onToggle={toggleTask} onDelete={deleteTask} />) */}
+            {course.tasks.map(task =>
+                <TaskItem
+                    key={task.id}
+                    task={task}
+                    onToggle={toggleTask}
+                    onDelete={deleteTask}
+                />
+            )}
+        </ul>
+
     </article>
   );
 }
