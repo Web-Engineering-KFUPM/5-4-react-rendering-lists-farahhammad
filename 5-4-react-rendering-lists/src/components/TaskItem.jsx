@@ -5,6 +5,7 @@ export default function TaskItem({ task, onToggle, onDelete }) {
 return (
 <li className="task" key={task.id}>
 <label className="taskMain">
+    {task.title}
 {/* 🟩 PART B (Anchor): Checkbox exists; students should wire onToggle(task.id) */}
 <input type="checkbox"
        checked={task.isDone}
